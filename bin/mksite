@@ -1,0 +1,17 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use YAML qw(LoadFile);
+use Carp;
+
+use lib 'lib';
+use App::mksite qw(mksite);
+
+my $config = LoadFile 'config.yml'
+    or croak "Could not find config.yml: $!";
+
+mksite $config, $ARGV[0];
+
+1;
